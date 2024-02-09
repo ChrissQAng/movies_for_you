@@ -11,11 +11,11 @@
     <h3>The best MovieDB</h3>
     <form>
       <input type="text" />
-      <input type="submit" value="SEARCH" onclick="sortFunction(event)" />
+      <input type="submit" value="SEARCH" onclick="searchFunction(event)" />
       <br />
-      <input type="button" value="YEAR UP" />
-      <input type="button" value="YEAR DOWN" />
-      <input type="button" value="BEST RATE" />
+      <input type="button" value="YEAR UP" onclick="yearUp()" />
+      <input type="button" value="YEAR DOWN" onclick="yearDown()" />
+      <input type="button" value="BEST RATE" onclick="bestRate()" />
     </form>
     <div class="movie-table"></div>
     <script src="./assets/js/main.js"></script>
