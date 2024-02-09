@@ -945,14 +945,8 @@ const movies = [
   ],
 ];
 
-// --- outputs
+// output
 
-// const inpTitle = document.querySelector(".title");
-// const inpYear = document.querySelector(".year");
-// const inpDirector = document.querySelector(".director");
-// const inpMovieLenght = document.querySelector(".movie-length");
-// const inpGenres = document.querySelector(".genres");
-// const inpRate = document.querySelector(".rate");
 const kachel = document.querySelector(".movie-table");
 
 const showMovies = () => {
@@ -1008,6 +1002,7 @@ ${genres}
 
   kachel.innerHTML = content;
 }
+
 // // --- Sortierung yearDown
 function yearDown() {
   const filteredArray = movies.sort((a, b) => {
@@ -1035,6 +1030,7 @@ ${genres}
 
   kachel.innerHTML = content;
 }
+
 // --- Sortierung bestRate
 function bestRate() {
   const filteredArray = movies.sort((a, b) => {
@@ -1062,3 +1058,12 @@ ${genres}
 
   kachel.innerHTML = content;
 }
+
+// ---- search function
+
+const searchFunction = (event) => {
+  event.preventDefault(event);
+  const userInput = document.querySelector(".user-input").value;
+  console.log(userInput);
+  const newArray = movies.map()
+};
