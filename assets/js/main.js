@@ -949,9 +949,11 @@ const movies = [
 
 const kachel = document.querySelector(".movie-table");
 
+let filteredArray = movies;
+
 const showMovies = () => {
   //   mappe das array movies, um alle element innerHTML abzubilden
-  movies.forEach((element) => {
+  filteredArray.forEach((element) => {
     // console.log(element);
     // mappt das array im array im array um die elemente ins innHTML zu schreiben
     const genres = element[4]
@@ -972,63 +974,66 @@ ${genres}
   });
 };
 
-showMovies(movies);
+showMovies();
 
 // --- Sortierung yearUp
 
 function yearUp() {
-  const filteredArray = movies.sort((a, b) => {
+  filteredArray = movies.sort((a, b) => {
     return a[1] - b[1];
   });
+  console.log("Hallo");
+  kachel.innerHTML = "";
+  showMovies();
+  //   const content = filteredArray
+  //     .map((element) => {
+  //       const genres = element[4]
+  //         .map((genre) => {
+  //           return `<p class="genres">${genre}</p>`;
+  //         })
+  //         .join(" ");
 
-  const content = filteredArray
-    .map((element) => {
-      const genres = element[4]
-        .map((genre) => {
-          return `<p class="genres">${genre}</p>`;
-        })
-        .join(" ");
+  //       return `   <div class="kachel">
+  //   <h4 class="title">${element[0]}</h4>
+  //   <p class="year">${element[1]}</p>
+  //   <p class="director">${element[2]}</p>
+  //   <p class="movie-length">${element[3]}</p>
+  // ${genres}
+  //   <p class="rate">${element[5]}</p>
+  //   </div>`;
+  //     })
+  //     .join(" ");
 
-      return `   <div class="kachel">
-  <h4 class="title">${element[0]}</h4>
-  <p class="year">${element[1]}</p>
-  <p class="director">${element[2]}</p>
-  <p class="movie-length">${element[3]}</p>
-${genres}
-  <p class="rate">${element[5]}</p>
-  </div>`;
-    })
-    .join(" ");
-
-  kachel.innerHTML = content;
+  //   kachel.innerHTML = content;
 }
 
 // // --- Sortierung yearDown
 function yearDown() {
-  const filteredArray = movies.sort((a, b) => {
+  filteredArray = movies.sort((a, b) => {
     return b[1] - a[1];
   });
+  kachel.innerHTML = "";
+  showMovies();
+  //   const content = filteredArray
+  //     .map((element) => {
+  //       const genres = element[4]
+  //         .map((genre) => {
+  //           return `<p class="genres">${genre}</p>`;
+  //         })
+  //         .join(" ");
 
-  const content = filteredArray
-    .map((element) => {
-      const genres = element[4]
-        .map((genre) => {
-          return `<p class="genres">${genre}</p>`;
-        })
-        .join(" ");
+  //       return `   <div class="kachel">
+  //   <h4 class="title">${element[0]}</h4>
+  //   <p class="year">${element[1]}</p>
+  //   <p class="director">${element[2]}</p>
+  //   <p class="movie-length">${element[3]}</p>
+  // ${genres}
+  //   <p class="rate">${element[5]}</p>
+  //   </div>`;
+  //     })
+  //     .join(" ");
 
-      return `   <div class="kachel">
-  <h4 class="title">${element[0]}</h4>
-  <p class="year">${element[1]}</p>
-  <p class="director">${element[2]}</p>
-  <p class="movie-length">${element[3]}</p>
-${genres}
-  <p class="rate">${element[5]}</p>
-  </div>`;
-    })
-    .join(" ");
-
-  kachel.innerHTML = content;
+  //   kachel.innerHTML = content;
 }
 
 // --- Sortierung bestRate
@@ -1036,27 +1041,29 @@ function bestRate() {
   const filteredArray = movies.sort((a, b) => {
     return b[5] - a[5];
   });
+  kachel.innerHTML = "";
+  showMovies();
 
-  const content = filteredArray
-    .map((element) => {
-      const genres = element[4]
-        .map((genre) => {
-          return `<p class="genres">${genre}</p>`;
-        })
-        .join(" ");
+  //   const content = filteredArray
+  //     .map((element) => {
+  //       const genres = element[4]
+  //         .map((genre) => {
+  //           return `<p class="genres">${genre}</p>`;
+  //         })
+  //         .join(" ");
 
-      return `   <div class="kachel">
-  <h4 class="title">${element[0]}</h4>
-  <p class="year">${element[1]}</p>
-  <p class="director">${element[2]}</p>
-  <p class="movie-length">${element[3]}</p>
-${genres}
-  <p class="rate">${element[5]}</p>
-  </div>`;
-    })
-    .join(" ");
+  //       return `   <div class="kachel">
+  //   <h4 class="title">${element[0]}</h4>
+  //   <p class="year">${element[1]}</p>
+  //   <p class="director">${element[2]}</p>
+  //   <p class="movie-length">${element[3]}</p>
+  // ${genres}
+  //   <p class="rate">${element[5]}</p>
+  //   </div>`;
+  //     })
+  //     .join(" ");
 
-  kachel.innerHTML = content;
+  //   kachel.innerHTML = content;
 }
 
 // ---- search function
@@ -1065,5 +1072,22 @@ const searchFunction = (event) => {
   event.preventDefault(event);
   const userInput = document.querySelector(".user-input").value;
   console.log(userInput);
-  const newArray = movies.map()
+  filteredArray = movies.filter(
+    (movie) =>
+      movie[0].toLowerCase().includes(userInput.toLowerCase()) ||
+      movie[1] === userInput
+  );
+
+  console.table(filteredArray);
+  // console.table(movies);
+
+  kachel.innerHTML = "";
+  showMovies();
 };
+
+//   arr.filter((movieArr) =>
+//     movieArr.some(
+//       (item) =>
+//         typeof item === 'string' && item.toLowerCase().includes(userInput)
+//     )
+// };
