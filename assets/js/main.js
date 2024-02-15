@@ -985,26 +985,6 @@ function yearUp() {
   console.log("Hallo");
   kachel.innerHTML = "";
   showMovies();
-  //   const content = filteredArray
-  //     .map((element) => {
-  //       const genres = element[4]
-  //         .map((genre) => {
-  //           return `<p class="genres">${genre}</p>`;
-  //         })
-  //         .join(" ");
-
-  //       return `   <div class="kachel">
-  //   <h4 class="title">${element[0]}</h4>
-  //   <p class="year">${element[1]}</p>
-  //   <p class="director">${element[2]}</p>
-  //   <p class="movie-length">${element[3]}</p>
-  // ${genres}
-  //   <p class="rate">${element[5]}</p>
-  //   </div>`;
-  //     })
-  //     .join(" ");
-
-  //   kachel.innerHTML = content;
 }
 
 // // --- Sortierung yearDown
@@ -1014,26 +994,6 @@ function yearDown() {
   });
   kachel.innerHTML = "";
   showMovies();
-  //   const content = filteredArray
-  //     .map((element) => {
-  //       const genres = element[4]
-  //         .map((genre) => {
-  //           return `<p class="genres">${genre}</p>`;
-  //         })
-  //         .join(" ");
-
-  //       return `   <div class="kachel">
-  //   <h4 class="title">${element[0]}</h4>
-  //   <p class="year">${element[1]}</p>
-  //   <p class="director">${element[2]}</p>
-  //   <p class="movie-length">${element[3]}</p>
-  // ${genres}
-  //   <p class="rate">${element[5]}</p>
-  //   </div>`;
-  //     })
-  //     .join(" ");
-
-  //   kachel.innerHTML = content;
 }
 
 // --- Sortierung bestRate
@@ -1043,27 +1003,6 @@ function bestRate() {
   });
   kachel.innerHTML = "";
   showMovies();
-
-  //   const content = filteredArray
-  //     .map((element) => {
-  //       const genres = element[4]
-  //         .map((genre) => {
-  //           return `<p class="genres">${genre}</p>`;
-  //         })
-  //         .join(" ");
-
-  //       return `   <div class="kachel">
-  //   <h4 class="title">${element[0]}</h4>
-  //   <p class="year">${element[1]}</p>
-  //   <p class="director">${element[2]}</p>
-  //   <p class="movie-length">${element[3]}</p>
-  // ${genres}
-  //   <p class="rate">${element[5]}</p>
-  //   </div>`;
-  //     })
-  //     .join(" ");
-
-  //   kachel.innerHTML = content;
 }
 
 // ---- search function
@@ -1071,12 +1010,16 @@ function bestRate() {
 const searchFunction = (event) => {
   event.preventDefault(event);
   const userInput = document.querySelector(".user-input").value;
-  console.log(userInput);
+
   filteredArray = movies.filter(
     (movie) =>
       movie[0].toLowerCase().includes(userInput.toLowerCase()) ||
       movie[1] === userInput
   );
+  // --- Fehler funtioniert nicht, überprüfen!
+  // filteredArray.length <= 0
+  //   ? (kachel.innerHTML = "<p> Kein Film gefunden</p>")
+  //   : searchFunction(filteredArray);
 
   console.table(filteredArray);
   // console.table(movies);
@@ -1084,10 +1027,3 @@ const searchFunction = (event) => {
   kachel.innerHTML = "";
   showMovies();
 };
-
-//   arr.filter((movieArr) =>
-//     movieArr.some(
-//       (item) =>
-//         typeof item === 'string' && item.toLowerCase().includes(userInput)
-//     )
-// };
